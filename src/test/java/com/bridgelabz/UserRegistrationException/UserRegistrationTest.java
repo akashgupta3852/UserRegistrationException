@@ -108,19 +108,61 @@ public class UserRegistrationTest {
 		}
 	}	
 	
+	
+	
 	@Test
 	public void givenEmailAddress_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
 		UserRegistration userRegistration =  new UserRegistration();
-		boolean result = userRegistration.checkEmailAddress("akashgupta3852@gmail.com");
-		Assert.assertEquals(true,result);
+		boolean result1 = userRegistration.checkEmailAddress("abc@yahoo.com");
+		boolean result2 = userRegistration.checkEmailAddress("abc-100@yahoo.com");
+		boolean result3 = userRegistration.checkEmailAddress("abc.100@yahoo.com");
+		boolean result4 = userRegistration.checkEmailAddress("abc111@abc.com");
+		boolean result5 = userRegistration.checkEmailAddress("abc-100@abc.net");
+		boolean result6 = userRegistration.checkEmailAddress("abc.100@abc.com.au");
+		boolean result7 = userRegistration.checkEmailAddress("abc@gmail.com.com");
+		boolean result8 = userRegistration.checkEmailAddress("abc@1.com");
+		boolean result9 = userRegistration.checkEmailAddress("abc+100@gmail.com");
+		Assert.assertEquals(true,result1);
+		Assert.assertEquals(true,result2);
+		Assert.assertEquals(true,result3);
+		Assert.assertEquals(true,result4);
+		Assert.assertEquals(true,result5);
+		Assert.assertEquals(true,result6);
+		Assert.assertEquals(true,result7);
+		Assert.assertEquals(true,result8);
+		Assert.assertEquals(true,result9);
 	}
 	
 	@Test
 	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration userRegistration =  new UserRegistration();
-		boolean result = userRegistration.checkEmailAddress("akashgupta3852@gmail..com");
-		Assert.assertEquals(false,result);
-	}	
+		boolean result1 = userRegistration.checkEmailAddress("abc");
+		boolean result2 = userRegistration.checkEmailAddress("abc@.com.my");
+		boolean result3 = userRegistration.checkEmailAddress("abc123@gmail.a");
+		boolean result4 = userRegistration.checkEmailAddress("abc123@.com");
+		boolean result5 = userRegistration.checkEmailAddress("abc123@.com.com");
+		boolean result6 = userRegistration.checkEmailAddress(".abc@abc.com");
+		boolean result7 = userRegistration.checkEmailAddress("abc()*@gmail.com");
+		boolean result8 = userRegistration.checkEmailAddress("abc@%*.com");
+		boolean result9 = userRegistration.checkEmailAddress("abc..2002@gmail.com");
+		boolean result10 = userRegistration.checkEmailAddress("abc.@gmail.com");
+		boolean result11 = userRegistration.checkEmailAddress("abc@abc@gmail.com");
+		boolean result12 = userRegistration.checkEmailAddress("abc@gmail.com.1a");
+		boolean result13 = userRegistration.checkEmailAddress("abc@gmail.com.aa.au");
+		Assert.assertEquals(false,result1);
+		Assert.assertEquals(false,result2);
+		Assert.assertEquals(false,result3);
+		Assert.assertEquals(false,result4);
+		Assert.assertEquals(false,result5);
+		Assert.assertEquals(false,result6);
+		Assert.assertEquals(false,result7);
+		Assert.assertEquals(false,result8);
+		Assert.assertEquals(false,result9);
+		Assert.assertEquals(false,result10);
+		Assert.assertEquals(false,result11);
+		Assert.assertEquals(false,result12);
+		Assert.assertEquals(false,result13);
+	}
 	
 	@Test
 	public void givenEmailAddress_WhenNull_ShouldReturnEnterProperMood() {
