@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 	public String firstName,lastName,emailId,mobileNum,password;
 	
+	public UserRegistration() {
+		
+	}
+	
 	public UserRegistration(String firstName, String lastName, String emailId, String mobileNum, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;

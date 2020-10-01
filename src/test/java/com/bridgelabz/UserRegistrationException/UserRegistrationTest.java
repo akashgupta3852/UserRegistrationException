@@ -195,7 +195,7 @@ public class UserRegistrationTest {
 	
 	@Test
 	public void givenPassword_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
-		UserRegistration userRegistration =  new UserRegistration("Akash","Gupta","akashgupta3852@gmail.com","91 9559473852","Abc@$67");
+		UserRegistration userRegistration =  new UserRegistration("Akash","Gupta","akashgupta3852@gmail.com","91 9559473852","Ab@$67");
 		boolean result = userRegistration.checkPassword(userRegistration.password);
 		Assert.assertEquals(false,result);
 	}
