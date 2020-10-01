@@ -144,7 +144,45 @@ public class UserRegistrationTest {
 			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
 			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
 		}
-	}	
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkMobileNumber("91 9559473852");
+		Assert.assertEquals(true,result);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNotProper_ShouldReturnFalse() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkMobileNumber("91 955947385");
+		Assert.assertEquals(false,result);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNull_ShouldReturnEnterProperMood() {
+		 UserRegistration userRegistration = new UserRegistration();
+		 try {
+	    	 boolean result = userRegistration.checkMobileNumber(null);
+	    	 Assert.assertEquals(false,result);
+	    }catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());
+	    }
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenEmpty_ShouldReturnEnterProperMood() {
+	UserRegistration userRegistration = new UserRegistration();
+		try {
+		    boolean result = userRegistration.checkMobileNumber("");
+		    Assert.assertEquals(false,result);
+		}catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
+		}
+	}
 		
 }
   
