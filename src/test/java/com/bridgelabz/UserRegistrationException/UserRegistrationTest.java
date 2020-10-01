@@ -183,6 +183,44 @@ public class UserRegistrationTest {
 			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
 		}
 	}
+	
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkPassword("123456789");
+		Assert.assertEquals(true,result);
+	}
+	
+	@Test
+	public void givenPassword_WhenShort_ShouldReturnFalse() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkPassword("1234");
+		Assert.assertEquals(false,result);
+	}
+	
+	@Test
+	public void givenPassword_WhenNull_ShouldReturnEnterProperMood() {
+		 UserRegistration userRegistration = new UserRegistration();
+		 try {
+	    	 boolean result = userRegistration.checkPassword(null);
+	    	 Assert.assertEquals(false,result);
+	    }catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());
+	    }
+	}
+	
+	@Test
+	public void givenPassword_WhenEmpty_ShouldReturnEnterProperMood() {
+	UserRegistration userRegistration = new UserRegistration();
+		try {
+		    boolean result = userRegistration.checkPassword("");
+		    Assert.assertEquals(false,result);
+		}catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
+		}
+	}
 		
 }
   
