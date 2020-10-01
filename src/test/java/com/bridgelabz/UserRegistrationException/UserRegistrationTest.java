@@ -106,7 +106,45 @@ public class UserRegistrationTest {
 			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
 			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
 		}
+	}	
+	
+	@Test
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkEmailAddress("akashgupta3852@gmail.com");
+		Assert.assertEquals(true,result);
 	}
+	
+	@Test
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() throws UserRegistrationException {
+		UserRegistration userRegistration =  new UserRegistration();
+		boolean result = userRegistration.checkEmailAddress("akashgupta3852@gmail..com");
+		Assert.assertEquals(false,result);
+	}	
+	
+	@Test
+	public void givenEmailAddress_WhenNull_ShouldReturnEnterProperMood() {
+		 UserRegistration userRegistration = new UserRegistration();
+		 try {
+	    	 boolean result = userRegistration.checkEmailAddress(null);
+	    	 Assert.assertEquals(false,result);
+	    }catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_NULL, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());
+	    }
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenEmpty_ShouldReturnEnterProperMood() {
+	UserRegistration userRegistration = new UserRegistration();
+		try {
+		    boolean result = userRegistration.checkEmailAddress("");
+		    Assert.assertEquals(false,result);
+		}catch(UserRegistrationException e) {
+			Assert.assertEquals(UserRegistrationException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
+			Assert.assertEquals("Enter Proper Mood", e.getMessage());			
+		}
+	}	
 		
 }
   
