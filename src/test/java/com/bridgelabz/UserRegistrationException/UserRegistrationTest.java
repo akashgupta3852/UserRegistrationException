@@ -187,7 +187,7 @@ public class UserRegistrationTest {
 	@Test
 	public void givenPassword_WhenProper_ShouldReturnTrue() throws UserRegistrationException {
 		UserRegistration userRegistration =  new UserRegistration();
-		boolean result = userRegistration.checkPassword("AbcKfghw8asfgdh$%adg@!");
+		boolean result = userRegistration.checkPassword("AbZWcKfghw854asfgdh@");
 		Assert.assertEquals(true,result);
 	}
 	
@@ -201,7 +201,7 @@ public class UserRegistrationTest {
 	@Test
 	public void givenPassword_WhenNotProper_ShouldReturnFalse() throws UserRegistrationException {
 		UserRegistration userRegistration =  new UserRegistration();
-		boolean result = userRegistration.checkPassword("Aab%^cdHI@#");
+		boolean result = userRegistration.checkPassword("13213HGGSAabcdHIdffgh");
 		Assert.assertEquals(false,result);
 	}
 	
