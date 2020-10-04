@@ -47,7 +47,7 @@ public class ValidEmailTest {
 	@Test
 	public void givenEmailAsVar_ShouldReturnAsPerParameterizedResult() throws UserRegistrationException {
 		UserRegistration userRegistration =  new UserRegistration();
-		boolean result = userRegistration.checkEmailAddress(this.emailToTest);
+		boolean result = userRegistration.checkEmailAddress.validate(this.emailToTest);
 		Assert.assertEquals(this.expectedResult,result);
 	}	
 
