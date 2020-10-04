@@ -28,42 +28,43 @@ public class UserRegistration {
 	}
 	
 	ICheck isEmptyNull = (data) -> {
-										if(data==null)
-										throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL ,"Enter Proper Mood");
-										if(data.length()==0)
-											throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY ,"Enter Proper Mood");
-										return false;
-									};
+		if(data==null)
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL ,"Enter Proper Mood");
+		if(data.length()==0)
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY ,"Enter Proper Mood");
+		return false;
+	};
+										
 
 	ICheck checkFirstName = (fName)-> {
-											isEmptyNull.validate(fName);
-											Pattern pattern = Pattern.compile(NAME_PATTERN);
-												return pattern.matcher(fName).matches();
-									  };
+		isEmptyNull.validate(fName);
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+			return pattern.matcher(fName).matches();
+	};
 
 	ICheck checkLastName = (lName)-> {
-										isEmptyNull.validate(lName);
-										Pattern pattern = Pattern.compile(NAME_PATTERN);
-									    	return pattern.matcher(lName).matches();
-									 };
+		isEmptyNull.validate(lName);
+		Pattern pattern = Pattern.compile(NAME_PATTERN);
+	    	return pattern.matcher(lName).matches();
+	};									
 
 	ICheck checkEmailAddress = (emailAddress)-> {
-													isEmptyNull.validate(emailAddress);
-													Pattern pattern = Pattern.compile(EMAIL_ADDRESS_PATTERN);
-												    	return pattern.matcher(emailAddress).matches();
-												};
+		isEmptyNull.validate(emailAddress);
+		Pattern pattern = Pattern.compile(EMAIL_ADDRESS_PATTERN);
+	    	return pattern.matcher(emailAddress).matches();
+	};												
 
 	ICheck checkMobileNumber = (mobileNumber)-> {
-													isEmptyNull.validate(mobileNumber);
-													Pattern pattern = Pattern.compile(MOBILE_NUMBER_PATTERN);
-												    	return pattern.matcher(mobileNumber).matches();
-												};
+		isEmptyNull.validate(mobileNumber);
+		Pattern pattern = Pattern.compile(MOBILE_NUMBER_PATTERN);
+	    	return pattern.matcher(mobileNumber).matches();
+	};												
 
 	ICheck checkPassword = (password)-> {
-											isEmptyNull.validate(password);
-											Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
-										    	return pattern.matcher(password).matches();
-										};
+		isEmptyNull.validate(password);
+		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+	    	return pattern.matcher(password).matches();
+	};										
 	
     public void printWelcome() {
         System.out.println( "Welcome to User Registration Problem" );
