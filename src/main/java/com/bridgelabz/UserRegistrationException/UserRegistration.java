@@ -29,9 +29,9 @@ public class UserRegistration {
 	
 	ICheck isEmptyNull = (data) -> {
 		if(data==null)
-			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL ,"Enter Proper Mood");
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_NULL ,"Enter proper data");
 		if(data.length()==0)
-			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY ,"Enter Proper Mood");
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_EMPTY ,"Enter proper data");
 		return false;
 	};
 										
@@ -39,31 +39,41 @@ public class UserRegistration {
 	ICheck checkFirstName = (fName)-> {
 		isEmptyNull.validate(fName);
 		Pattern pattern = Pattern.compile(NAME_PATTERN);
-			return pattern.matcher(fName).matches();
+		if(!pattern.matcher(fName).matches())
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_INVALID ,"Enter Proper First Name");
+		return true;
 	};
 
 	ICheck checkLastName = (lName)-> {
 		isEmptyNull.validate(lName);
 		Pattern pattern = Pattern.compile(NAME_PATTERN);
-	    	return pattern.matcher(lName).matches();
+		if(!pattern.matcher(lName).matches())
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_INVALID ,"Enter Proper Last Name");
+		return true;
 	};									
 
 	ICheck checkEmailAddress = (emailAddress)-> {
 		isEmptyNull.validate(emailAddress);
 		Pattern pattern = Pattern.compile(EMAIL_ADDRESS_PATTERN);
-	    	return pattern.matcher(emailAddress).matches();
+		if(!pattern.matcher(emailAddress).matches())
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_INVALID ,"Enter Proper Email Address");
+		return true;
 	};												
 
 	ICheck checkMobileNumber = (mobileNumber)-> {
 		isEmptyNull.validate(mobileNumber);
 		Pattern pattern = Pattern.compile(MOBILE_NUMBER_PATTERN);
-	    	return pattern.matcher(mobileNumber).matches();
+		if(!pattern.matcher(mobileNumber).matches())
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_INVALID ,"Enter Proper Mobile Number");
+		return true;
 	};												
 
 	ICheck checkPassword = (password)-> {
 		isEmptyNull.validate(password);
 		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
-	    	return pattern.matcher(password).matches();
+		if(!pattern.matcher(password).matches())
+			throw new UserRegistrationException(UserRegistrationException.ExceptionType.ENTERED_INVALID ,"Enter Proper Password");
+		return true;
 	};										
 	
     public void printWelcome() {
